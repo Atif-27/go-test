@@ -2,9 +2,10 @@ package main
 
 import "fmt"
 
-func displaySlice[T int |string](arr []T) {
+func displaySlice[T comparable, F string|int](arr []T, name F) {
+	var sliceName F=name
 	for _, val := range arr {
-		fmt.Println(val)
+		fmt.Println(val,sliceName)
 	}
 }
 
@@ -26,8 +27,8 @@ func (s *stack[T]) pop()T{
 }
 
 func main() {
-	// iarr:=[]string{"1","2","45"}
-	// displaySlice[string](iarr)
+	iarr:=[]string{"1","2","45"}
+	displaySlice[string,string](iarr,"Atif")
 	myStack:= stack[int]{}
 	myStack.push(10)
 	myStack.push(20)
